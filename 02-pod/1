@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: devops
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: websever
+  namespace: devops
+  labels:
+    app: webdb
+    tier: backend
+spec:
+  containers:
+  - name: db-server
+    image: mysql
+    ports:
+    - containerPort: 3306
+    env:
+    - name: MYSQL_ROOT_PASWORD
+      value: password@12345
+  - name : web-server
+    image: nginx
+    ports:
+    - containerPort: 80    
+
+       
+
+    
